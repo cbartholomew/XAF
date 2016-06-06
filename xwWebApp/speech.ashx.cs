@@ -35,6 +35,7 @@ namespace xwWebApp
 
             ctx.Response.End();
         }
+
         public bool IsReusable
         {
             get

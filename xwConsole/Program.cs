@@ -10,7 +10,7 @@ using xwSearchLib.Configuration;
 namespace xwConsole
 {
     /// <summary>
-    /// Testing Grounds
+    /// This program is for building files and testing the library. This is not the application.
     /// </summary>
     class Program
     {
@@ -77,6 +77,15 @@ namespace xwConsole
             
         }
 
+        static void DoCreateJSONFiles(List<Upgrade> upgrades, List<Pilot> pilots)
+        {
+            string upgradeJSON = xwJSONSerializer.Serialize<List<Upgrade>>(upgrades);
+            string pilotJSON = xwJSONSerializer.Serialize<List<Pilot>>(pilots);
+
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\upgrades.in", upgradeJSON);
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\pilots.in", pilotJSON);        
+        }
+
         static void Main(string[] args)
         {
             List<string[]> upgradeRows = xwExcel.createFromExcel(file_path, 
@@ -100,19 +109,12 @@ namespace xwConsole
             {
                 pilots.Add(new Pilot(row));
             }
-
-
         
             //DoSearch(upgrades, pilots);
             //DoSpeechSplitByPhrases(upgrades, pilots);
             //DoSpeechSplitByWords(upgrades, pilots);
             //DoXWDictionaryBuild(upgrades, pilots);
-            string upgradeJSON = xwJSONSerializer.Serialize<List<Upgrade>>(upgrades);
-            string pilotJSON = xwJSONSerializer.Serialize<List<Pilot>>(pilots);
-            
-            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\upgrades.in",upgradeJSON);
-            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\pilots.in",pilotJSON);
-            
+            //DoCreateJSONFiles(upgrades, pilots);
             //DoGetXWSpeechParts();
         }
     }
