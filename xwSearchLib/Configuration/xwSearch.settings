@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="xwSearchLib.Configuration" GeneratedClassName="xwSearch">
+  <Profiles />
+  <Settings>
+    <Setting Name="VERB" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\conv.data.verb</Value>
+    </Setting>
+    <Setting Name="NOUN" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\conv.data.noun</Value>
+    </Setting>
+    <Setting Name="ADVERB" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\conv.data.adj</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
