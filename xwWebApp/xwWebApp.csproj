@@ -76,6 +76,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\app.css" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -87,6 +88,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.12.4.min.js" />
     <Content Include="js\npm.js" />
+    <Content Include="loader.gif" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
