@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization.Json;
 using System.IO;
-using System.Text;
 
 namespace xwSearchLib.Utility
 {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using xwSearchLib.Model;
 using xwSearchLib.Utility;
+using xwSearchLib.Configuration;
 
 namespace xwConsole
 {
@@ -24,7 +25,7 @@ namespace xwConsole
 
         }
 
-        static void DoSpeechSplitByWords(List<Upgrade> upgrades, List<Pilot> pilots)
+        static void DoXWDictionaryBuild(List<Upgrade> upgrades, List<Pilot> pilots)
         {
             xwSpeech speech = new xwSpeech(pilots, upgrades);
 
@@ -32,10 +33,40 @@ namespace xwConsole
 
             speech.justWordList.Sort();
 
+            List<string> verbs =        xwDictionary.getVerbs(speech.justWordList);
+            List<string> nouns =        xwDictionary.getNouns(speech.justWordList);
+            List<string> adVerbs =      xwDictionary.getAdVerbs(speech.justWordList);
+
+            string outputVerbFileName = xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_VERB);
+            string outputAdVerbFileName = xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_AD_VERB);
+            string outputNounFileName = xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_NOUN);
+
+            xwDictionary.writeDictionaryData(verbs, outputVerbFileName);
+            xwDictionary.writeDictionaryData(nouns, outputNounFileName);
+            xwDictionary.writeDictionaryData(adVerbs, outputAdVerbFileName);
+        }
+
+        static void DoGetXWSpeechParts()
+        {
+            List<string> verbs = xwDictionary.getXWVerbs();
+            List<string> nouns =  xwDictionary.getXWNouns();
+            List<string> adVerbs = xwDictionary.getXWAdVerbs();
+
+            XWSpeechPart speechPart = new XWSpeechPart(verbs, nouns, adVerbs);
+
+        }
+
+        static void DoSpeechSplitByWords(List<Upgrade> upgrades, List<Pilot> pilots)
+        {
+            xwSpeech speech = new xwSpeech(pilots, upgrades);
+           
+            speech.splitIntoWords();
+
+            speech.justWordList.Sort();
+
             List<string> verbs = xwDictionary.getVerbs(speech.justWordList);
             List<string> nouns = xwDictionary.getNouns(speech.justWordList);
             List<string> adVerbs = xwDictionary.getAdVerbs(speech.justWordList);
-
         }
 
         static void DoSpeechSplitByPhrases(List<Upgrade> upgrades, List<Pilot> pilots)
@@ -74,9 +105,11 @@ namespace xwConsole
         
             //DoSearch(upgrades, pilots);
             //DoSpeechSplitByPhrases(upgrades, pilots);
-            DoSpeechSplitByWords(upgrades, pilots);
+            //DoSpeechSplitByWords(upgrades, pilots);
+            //DoXWDictionaryBuild(upgrades, pilots);
             //string upgradeJSON = xwJSONSerializer.Serialize<List<Upgrade>>(upgrades);
             //string pilotJSON = xwJSONSerializer.Serialize<List<Pilot>>(pilots);
+            DoGetXWSpeechParts();
         }
     }
 }

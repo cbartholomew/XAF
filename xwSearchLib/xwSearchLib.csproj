@@ -63,6 +63,7 @@
     <Compile Include="Model\Upgrade.cs" />
     <Compile Include="Model\XWActionDetail.cs" />
     <Compile Include="Model\XWSearchResult.cs" />
+    <Compile Include="Model\XWSpeechPart.cs" />
     <Compile Include="Model\XWTypeDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\xwDictionary.cs" />
@@ -82,6 +83,9 @@
     <None Include="Dictionary\conv.data.adv" />
     <None Include="Dictionary\conv.data.noun" />
     <None Include="Dictionary\conv.data.verb" />
+    <None Include="Dictionary\xwing.data.adv" />
+    <None Include="Dictionary\xwing.data.noun" />
+    <None Include="Dictionary\xwing.data.verb" />
     <None Include="packages.config" />
     <None Include="Template\X-Wing Pilots, Upgrades and FAQ.xlsx" />
   </ItemGroup>

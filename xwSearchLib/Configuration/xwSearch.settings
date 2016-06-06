@@ -3,13 +3,25 @@
   <Profiles />
   <Settings>
     <Setting Name="VERB" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\conv.data.verb</Value>
+      <Value Profile="(Default)">conv.data.verb</Value>
     </Setting>
     <Setting Name="NOUN" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\conv.data.noun</Value>
+      <Value Profile="(Default)">conv.data.noun</Value>
     </Setting>
     <Setting Name="ADVERB" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\conv.data.adj</Value>
+      <Value Profile="(Default)">conv.data.adj</Value>
+    </Setting>
+    <Setting Name="DICTIONARY_OUTPUT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\</Value>
+    </Setting>
+    <Setting Name="XW_VERB_FILE_NAME" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xwing.data.verb</Value>
+    </Setting>
+    <Setting Name="XW_NOUN_FILE_NAME" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xwing.data.noun</Value>
+    </Setting>
+    <Setting Name="XW_ADVERB_FILE_NAME" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xwing.data.adv</Value>
     </Setting>
   </Settings>
 </SettingsFile>

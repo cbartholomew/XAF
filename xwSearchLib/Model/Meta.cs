@@ -14,6 +14,17 @@ namespace xwSearchLib.Model
         public const string PILOT_SHEET_START = "A";
         public const string PILOT_SHEET_END = "AI";
 
+        public enum PATH_TYPE
+        {
+            VERB,
+            NOUN,
+            AD_VERB,
+            XW_VERB,
+            XW_NOUN,
+            XW_AD_VERB,                
+            ERROR
+        }
+
         public enum XW_TYPE
         {
             ASTROMECHS,

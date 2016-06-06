@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            xwFinder.init("load");
+        });
+    </script>
+</head>
+<body>
+    <div class="container" id="content">
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <label for="xw_noun">Action</label>
+                    <select class="form-control" id="xw_verb">
+                        <option selected="selected">Select Action</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="xw_noun">Feature</label>
+                    <select class="form-control" id="xw_noun">
+                        <option selected="selected">Select Feature</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="xw_faction">Faction</label>
+                    <select class="form-control" id="xw_faction"></select>
+                </div>
+                <button type="button" class="btn btn-default btn-block">Search</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/app.js"></script>

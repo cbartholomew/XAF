@@ -15,8 +15,26 @@ namespace xwWebApp
 
         public void ProcessRequest(HttpContext context)
         {
-            processStandardSpeechPhraseRequest(context);
+            processLoadContent(context);
         }
+
+        private void processLoadContent(HttpContext ctx) 
+        {
+            ctx.Response.ContentType = "application/json";
+
+            List<string> verbs      = xwDictionary.getXWVerbs();
+            List<string> nouns      = xwDictionary.getXWNouns();
+            List<string> adVerbs    = xwDictionary.getXWAdVerbs();
+
+            XWSpeechPart speechPart = new XWSpeechPart(verbs, nouns, adVerbs);
+
+            string resultJSON = xwJSONSerializer.Serialize<XWSpeechPart>(speechPart);
+
+            ctx.Response.Write(resultJSON);
+
+            ctx.Response.End();
+        }
+
 
         private void processStandardSpeechPhraseRequest(HttpContext ctx)
         {

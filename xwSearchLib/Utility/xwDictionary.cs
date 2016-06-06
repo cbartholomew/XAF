@@ -17,7 +17,7 @@ namespace xwSearchLib.Utility
 
             List<string> adVerbs = new List<string>();
 
-            adVerbs = File.ReadAllLines(searchConfig.ADVERB).ToList();
+            adVerbs = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.ADVERB).ToList();
 
             adVerbs.Sort();
 
@@ -33,7 +33,7 @@ namespace xwSearchLib.Utility
 
             List<string> verbs = new List<string>();
 
-            verbs = File.ReadAllLines(searchConfig.VERB).ToList();
+            verbs = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.VERB).ToList();
 
             verbs.Sort();
 
@@ -48,13 +48,99 @@ namespace xwSearchLib.Utility
 
             List<string> nouns = new List<string>();
 
-            nouns = File.ReadAllLines(searchConfig.NOUN).ToList();
+            nouns = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.NOUN).ToList();
 
             nouns.Sort();
 
             nouns = listOfWords.FindAll(x => x == nouns.Find(y => y == x)).ToList();
 
             return nouns;
+        }
+
+        public static List<string> getXWVerbs()
+        {
+            xwSearch searchConfig = new xwSearch();
+
+            List<string> verbs = new List<string>();
+
+            verbs = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.XW_VERB_FILE_NAME).ToList();
+
+            verbs.RemoveAll(v => v == "");
+
+            return verbs;
+        }
+
+        public static List<string> getXWAdVerbs()
+        {
+            xwSearch searchConfig = new xwSearch();
+
+            List<string> adVerbs = new List<string>();
+
+            adVerbs = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.XW_ADVERB_FILE_NAME).ToList();
+
+            adVerbs.RemoveAll(a => a == "");
+
+            return adVerbs;
+        }
+
+        public static List<string> getXWNouns()
+        {
+            xwSearch searchConfig = new xwSearch();
+
+            List<string> nouns = new List<string>();
+
+            nouns = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.XW_NOUN_FILE_NAME).ToList();
+
+            nouns.RemoveAll(n => n == "");
+
+            return nouns;
+        }
+
+        public static void writeDictionaryData(List<string> listOfWords, string filePath)
+        {
+            xwSearch searchConfig = new xwSearch();
+
+            StringBuilder output = new StringBuilder();
+
+            foreach (string word in listOfWords)
+                output.AppendLine(word);
+
+            File.WriteAllText(filePath,output.ToString());       
+        }
+
+        public static string getDictionaryPath(PATH_TYPE pathType)
+        {
+            xwSearch searchConfig = new xwSearch();
+            
+            string path = searchConfig.DICTIONARY_OUTPUT;
+
+            switch (pathType)
+            {
+                case PATH_TYPE.VERB:
+                    path += searchConfig.VERB;
+                    break;
+                case PATH_TYPE.NOUN:
+                    path += searchConfig.NOUN;
+                    break;
+                case PATH_TYPE.AD_VERB:
+                    path += searchConfig.ADVERB;
+                    break;
+                case PATH_TYPE.XW_VERB:
+                    path += searchConfig.XW_VERB_FILE_NAME;
+                    break;
+                case PATH_TYPE.XW_NOUN:
+                    path += searchConfig.XW_NOUN_FILE_NAME;
+                    break;
+                case PATH_TYPE.XW_AD_VERB:
+                    path += searchConfig.XW_ADVERB_FILE_NAME;
+                    break;
+                default:
+                    path += "PATH_NOT_FOUND";
+                    break;
+            }
+
+            return path;
+
         }
 
         public static XW_RESTRICTION getRestrictionByFactionType(XW_FACTION faction)

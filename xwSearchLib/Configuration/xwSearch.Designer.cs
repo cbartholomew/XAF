@@ -25,8 +25,7 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Dictionary\\conv." +
-            "data.verb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("conv.data.verb")]
         public string VERB {
             get {
                 return ((string)(this["VERB"]));
@@ -35,8 +34,7 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Dictionary\\conv." +
-            "data.noun")]
+        [global::System.Configuration.DefaultSettingValueAttribute("conv.data.noun")]
         public string NOUN {
             get {
                 return ((string)(this["NOUN"]));
@@ -45,11 +43,46 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Dictionary\\conv." +
-            "data.adj")]
+        [global::System.Configuration.DefaultSettingValueAttribute("conv.data.adj")]
         public string ADVERB {
             get {
                 return ((string)(this["ADVERB"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Dictionary\\")]
+        public string DICTIONARY_OUTPUT {
+            get {
+                return ((string)(this["DICTIONARY_OUTPUT"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xwing.data.verb")]
+        public string XW_VERB_FILE_NAME {
+            get {
+                return ((string)(this["XW_VERB_FILE_NAME"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xwing.data.noun")]
+        public string XW_NOUN_FILE_NAME {
+            get {
+                return ((string)(this["XW_NOUN_FILE_NAME"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xwing.data.adv")]
+        public string XW_ADVERB_FILE_NAME {
+            get {
+                return ((string)(this["XW_ADVERB_FILE_NAME"]));
             }
         }
     }
