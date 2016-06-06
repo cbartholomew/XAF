@@ -104,5 +104,23 @@ namespace xwSearchLib.Configuration {
                 return ((string)(this["DICTIONARY_OUTPUT"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pilots.in")]
+        public string PILOT_FILE {
+            get {
+                return ((string)(this["PILOT_FILE"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("upgrades.in")]
+        public string UPGRADE_FILE {
+            get {
+                return ((string)(this["UPGRADE_FILE"]));
+            }
+        }
     }
 }

@@ -134,6 +134,12 @@ namespace xwSearchLib.Utility
                 case PATH_TYPE.XW_AD_VERB:
                     path += searchConfig.XW_ADVERB_FILE_NAME;
                     break;
+                case PATH_TYPE.PILOT_FILE:
+                    path += searchConfig.PILOT_FILE;
+                    break;
+                case PATH_TYPE.UPGRADE_FILE:
+                    path += searchConfig.UPGRADE_FILE;
+                    break;
                 default:
                     path += "PATH_NOT_FOUND";
                     break;

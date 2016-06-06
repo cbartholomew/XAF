@@ -21,7 +21,9 @@ namespace xwSearchLib.Model
             AD_VERB,
             XW_VERB,
             XW_NOUN,
-            XW_AD_VERB,                
+            XW_AD_VERB,     
+            PILOT_FILE,
+            UPGRADE_FILE,
             ERROR
         }
 

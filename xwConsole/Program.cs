@@ -107,9 +107,13 @@ namespace xwConsole
             //DoSpeechSplitByPhrases(upgrades, pilots);
             //DoSpeechSplitByWords(upgrades, pilots);
             //DoXWDictionaryBuild(upgrades, pilots);
-            //string upgradeJSON = xwJSONSerializer.Serialize<List<Upgrade>>(upgrades);
-            //string pilotJSON = xwJSONSerializer.Serialize<List<Pilot>>(pilots);
-            DoGetXWSpeechParts();
+            string upgradeJSON = xwJSONSerializer.Serialize<List<Upgrade>>(upgrades);
+            string pilotJSON = xwJSONSerializer.Serialize<List<Pilot>>(pilots);
+            
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\upgrades.in",upgradeJSON);
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\pilots.in",pilotJSON);
+            
+            //DoGetXWSpeechParts();
         }
     }
 }

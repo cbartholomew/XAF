@@ -89,7 +89,6 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.12.4.min.js" />
     <Content Include="js\npm.js" />
-    <Content Include="loader.gif" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

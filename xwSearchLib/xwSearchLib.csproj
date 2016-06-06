@@ -85,6 +85,12 @@
     <None Include="Dictionary\conv.data.adv" />
     <None Include="Dictionary\conv.data.noun" />
     <None Include="Dictionary\conv.data.verb" />
+    <None Include="Dictionary\pilots.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\upgrades.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Dictionary\xwing.data.adv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
