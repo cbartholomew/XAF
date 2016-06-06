@@ -63,7 +63,7 @@ namespace xwSearchLib.Utility
 
             List<string> verbs = new List<string>();
 
-            verbs = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.XW_VERB_FILE_NAME).ToList();
+            verbs = File.ReadAllLines(getDictionaryPath(PATH_TYPE.VERB)).ToList();
 
             verbs.RemoveAll(v => v == "");
 
@@ -76,7 +76,7 @@ namespace xwSearchLib.Utility
 
             List<string> adVerbs = new List<string>();
 
-            adVerbs = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.XW_ADVERB_FILE_NAME).ToList();
+            adVerbs = File.ReadAllLines(getDictionaryPath(PATH_TYPE.XW_AD_VERB)).ToList();
 
             adVerbs.RemoveAll(a => a == "");
 
@@ -89,7 +89,7 @@ namespace xwSearchLib.Utility
 
             List<string> nouns = new List<string>();
 
-            nouns = File.ReadAllLines(searchConfig.DICTIONARY_OUTPUT + searchConfig.XW_NOUN_FILE_NAME).ToList();
+            nouns = File.ReadAllLines(getDictionaryPath(PATH_TYPE.XW_NOUN)).ToList();
 
             nouns.RemoveAll(n => n == "");
 
@@ -112,7 +112,8 @@ namespace xwSearchLib.Utility
         {
             xwSearch searchConfig = new xwSearch();
             
-            string path = searchConfig.DICTIONARY_OUTPUT;
+            string path = (searchConfig.IS_LOCAL) ? searchConfig.LOCAL_OUTPUT : 
+                searchConfig.DICTIONARY_OUTPUT;
 
             switch (pathType)
             {

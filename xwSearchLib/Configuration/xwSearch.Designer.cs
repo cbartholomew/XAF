@@ -79,8 +79,8 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\Hosting\\\\4173543\\\\html\\\\XAF\\\\bin\\\\Template\\\\X-Wing Pilots, Upgrades and FAQ.x" +
-            "lsx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Template\\X-Wing " +
+            "Pilots, Upgrades and FAQ.xlsx")]
         public string SERVER_TEMPLATE {
             get {
                 return ((string)(this["SERVER_TEMPLATE"]));
@@ -120,6 +120,15 @@ namespace xwSearchLib.Configuration {
         public string UPGRADE_FILE {
             get {
                 return ((string)(this["UPGRADE_FILE"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IS_LOCAL {
+            get {
+                return ((bool)(this["IS_LOCAL"]));
             }
         }
     }

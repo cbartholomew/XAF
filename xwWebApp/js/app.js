@@ -126,18 +126,29 @@ var xwFinder = {
                             <th>Unique?</th>                                     
                             <th>Name</th>                                                                                       
                             <th>Faction</th>
-                            <th>Ship</th>
+                            <th>Ship [p/h/a/s]</th>
                             <th>Ability</th>
                             <th>Availability</th>
                         */                        
                         $(pilots).each(function (index) {
+
+                            var shield              = this.shipMetaData.shieldValue;
+                            var hull                = this.shipMetaData.hullValue;
+                            var agility             = this.shipMetaData.agilityValue;
+                            var primaryWeaponValue  = this.shipMetaData.primaryWeaponValue;
+                            var shipTemplate = "["
+                                + primaryWeaponValue
+                                + "/" + hull
+                                + "/" + agility
+                                + "/" + shield + "]";
+
                             pilotTbodyHtml += "<tr>";
                             pilotTbodyHtml += "<td>" + this.pilotSkill      + "</td>";
                             pilotTbodyHtml += "<td>" + this.squadPointCost  + "</td>";
                             pilotTbodyHtml += "<td>" + this.isUnique        + "</td>";
                             pilotTbodyHtml += "<td>" + this.name            + "</td>";
                             pilotTbodyHtml += "<td>" + this.factionDesc     + "</td>";
-                            pilotTbodyHtml += "<td>" + this.shipType        + "</td>";
+                            pilotTbodyHtml += "<td>" + this.shipType + " " + shipTemplate + "</td>";
                             pilotTbodyHtml += "<td>" + this.pilotAbility    + "</td>";
                             pilotTbodyHtml += "<td>" + this.availability    + "</td>";
                             pilotTbodyHtml += "</tr>";
