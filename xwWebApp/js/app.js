@@ -3,9 +3,9 @@ var xwNounSelect = $("#xw_noun");
 var xwFactionSelect = $("#xw_faction");
 var xwLoading = $(".loading");
 var xwSearch = $("#search");
-var xwPilotTbody = $("#pilot_tbody");
+var xwPilotTbody = $(".pilot_tbody");
 var xwPilotCount = $("#pilot_count");
-var xwUpgradeTbody = $("#upgrade_tbody");
+var xwUpgradeTbody = $(".upgrade_tbody");
 var xwUpgradeCount = $("#upgrade_count");
 
 
@@ -121,19 +121,19 @@ var xwFinder = {
                         var upgradeTbodyHtml = "";
 
                         /*
-                            <th>Pilot Skill</th>       
+                            <th>Pilot Skill</th>  
+                            <th>Squad Points</th>   
                             <th>Unique?</th>                                     
                             <th>Name</th>                                                                                       
                             <th>Faction</th>
                             <th>Ship</th>
                             <th>Ability</th>
                             <th>Availability</th>
-                        */
-                        
+                        */                        
                         $(pilots).each(function (index) {
-
                             pilotTbodyHtml += "<tr>";
                             pilotTbodyHtml += "<td>" + this.pilotSkill      + "</td>";
+                            pilotTbodyHtml += "<td>" + this.squadPointCost  + "</td>";
                             pilotTbodyHtml += "<td>" + this.isUnique        + "</td>";
                             pilotTbodyHtml += "<td>" + this.name            + "</td>";
                             pilotTbodyHtml += "<td>" + this.factionDesc     + "</td>";
@@ -141,7 +141,6 @@ var xwFinder = {
                             pilotTbodyHtml += "<td>" + this.pilotAbility    + "</td>";
                             pilotTbodyHtml += "<td>" + this.availability    + "</td>";
                             pilotTbodyHtml += "</tr>";
-
                         });
 
                         /*
@@ -152,7 +151,6 @@ var xwFinder = {
                             <th>Ability</th>
                             <th>Availability</th>
                        */
-
                         $(upgrades).each(function (index) {
 
                             upgradeTbodyHtml += "<tr>";
