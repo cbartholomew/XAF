@@ -52,15 +52,6 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Dictionary\\")]
-        public string DICTIONARY_OUTPUT {
-            get {
-                return ((string)(this["DICTIONARY_OUTPUT"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("xwing.data.verb")]
         public string XW_VERB_FILE_NAME {
             get {
@@ -83,6 +74,34 @@ namespace xwSearchLib.Configuration {
         public string XW_ADVERB_FILE_NAME {
             get {
                 return ((string)(this["XW_ADVERB_FILE_NAME"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\Hosting\\\\4173543\\\\html\\\\XAF\\\\bin\\\\Template\\\\X-Wing Pilots, Upgrades and FAQ.x" +
+            "lsx")]
+        public string SERVER_TEMPLATE {
+            get {
+                return ((string)(this["SERVER_TEMPLATE"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Christopher\\Source\\Repos\\XWingAbilityFinder\\xwSearchLib\\Dictionary\\")]
+        public string LOCAL_OUTPUT {
+            get {
+                return ((string)(this["LOCAL_OUTPUT"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\Hosting\\\\4173543\\\\html\\\\XAF\\\\bin\\\\Dictionary\\\\")]
+        public string DICTIONARY_OUTPUT {
+            get {
+                return ((string)(this["DICTIONARY_OUTPUT"]));
             }
         }
     }

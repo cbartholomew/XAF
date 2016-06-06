@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>xaf</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <script src="js/jquery-1.12.4.min.js"></script>
@@ -14,6 +14,9 @@
 </head>
 <body>
     <div class="container" id="content">
+        <h1>XAF</h1>
+        <em>x-wing ability finder</em>
+        <br />
         <div class="row">
             <div class="col-md-12">
                 <form>
@@ -33,7 +36,10 @@
                         <label for="xw_faction">Faction</label>
                         <select class="form-control" id="xw_faction"></select>
                     </div>
-                    <button type="button" id="search" class="btn btn-default btn-block">Search</button>
+                    <div class="form-group">
+                        <label class="error_text"></label>                      
+                    </div>
+                    <button type="button" id="search" class="btn btn-dark btn-block">Search</button>
                 </form>
             </div>
         </div>

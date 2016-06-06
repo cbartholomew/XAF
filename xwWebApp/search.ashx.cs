@@ -20,7 +20,8 @@ namespace xwWebApp
 
         private void processStandardSearchRequest(HttpContext ctx)
         {
-            string file_path = @"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Template\X-Wing Pilots, Upgrades and FAQ.xlsx";
+            //string file_path = @"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Template\X-Wing Pilots, Upgrades and FAQ.xlsx";
+            string file_path = "D:\\Hosting\\4173543\\html\\XAF\bin\\Template\\X-Wing Pilots, Upgrades and FAQ.xlsx";
 
             ctx.Response.ContentType = "application/json";
             var noun = ctx.Request.QueryString["noun"].ToString();

@@ -56,6 +56,7 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>xwSearch.settings</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Model\Meta.cs" />
     <Compile Include="Model\Pilot.cs" />
@@ -78,16 +79,25 @@
     <None Include="Configuration\xwSearch.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>xwSearch.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Dictionary\conv.data.adj" />
     <None Include="Dictionary\conv.data.adv" />
     <None Include="Dictionary\conv.data.noun" />
     <None Include="Dictionary\conv.data.verb" />
-    <None Include="Dictionary\xwing.data.adv" />
-    <None Include="Dictionary\xwing.data.noun" />
-    <None Include="Dictionary\xwing.data.verb" />
+    <None Include="Dictionary\xwing.data.adv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\xwing.data.noun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\xwing.data.verb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
-    <None Include="Template\X-Wing Pilots, Upgrades and FAQ.xlsx" />
+    <None Include="Template\X-Wing Pilots, Upgrades and FAQ.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

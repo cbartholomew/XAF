@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using xwSearchLib.Model;
 using xwSearchLib.Utility;
+using xwSearchLib.Configuration;
 
 namespace xwWebApp
 {
@@ -38,7 +39,8 @@ namespace xwWebApp
 
         private void processStandardSpeechPhraseRequest(HttpContext ctx)
         {
-            string file_path = @"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Template\X-Wing Pilots, Upgrades and FAQ.xlsx";
+            //string file_path = @"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Template\X-Wing Pilots, Upgrades and FAQ.xlsx";
+            string file_path = "D:\\Hosting\\4173543\\html\\XAF\bin\\Template\\X-Wing Pilots, Upgrades and FAQ.xlsx";
 
             ctx.Response.ContentType = "application/json";
 
