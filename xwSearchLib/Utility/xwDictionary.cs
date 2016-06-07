@@ -63,7 +63,7 @@ namespace xwSearchLib.Utility
 
             List<string> verbs = new List<string>();
 
-            verbs = File.ReadAllLines(getDictionaryPath(PATH_TYPE.VERB)).ToList();
+            verbs = File.ReadAllLines(getDictionaryPath(PATH_TYPE.XW_VERB)).ToList();
 
             verbs.RemoveAll(v => v == "");
 
