@@ -119,6 +119,7 @@ var xwFinder = {
                         var upgrades = data["upgrades"];
                         var pilotTbodyHtml = "";
                         var upgradeTbodyHtml = "";
+                        var popoverTemplate = "<button type='button' class='btn btn-sm btn-dark' data-toggle='popover' title='#SHIP_NAME_TITLE#' data-content='#CONTENT#'>#SHIP_NAME#</button>";
 
                         /*
                             <th>Pilot Skill</th>  
@@ -131,16 +132,22 @@ var xwFinder = {
                             <th>Availability</th>
                         */                        
                         $(pilots).each(function (index) {
+                            var contentHtml = "";
+                            var actionDetailsHtml = "";
+                            var shipFeaturesHtml = "";
+
+                            // build pop over
+                            popoverTemplate = popoverTemplate.replace("#SHIP_NAME#", this.shipType);
 
                             var shield              = this.shipMetaData.shieldValue;
                             var hull                = this.shipMetaData.hullValue;
                             var agility             = this.shipMetaData.agilityValue;
                             var primaryWeaponValue  = this.shipMetaData.primaryWeaponValue;
-                            var shipTemplate = "["
-                                + primaryWeaponValue
-                                + "/" + hull
-                                + "/" + agility
-                                + "/" + shield + "]";
+                            var shipTemplate = 
+                                    "<span class='label label-danger'>" + primaryWeaponValue + "</span>"
+                                + "<span class='label label-success'>" + agility + "</span>"
+                                +  "<span class='label label-warning'>" + hull + "</span>"                            
+                                +  "<span class='label label-info'>" + shield + "</span>";
 
                             pilotTbodyHtml += "<tr>";
                             pilotTbodyHtml += "<td>" + this.pilotSkill      + "</td>";
@@ -148,7 +155,7 @@ var xwFinder = {
                             pilotTbodyHtml += "<td>" + this.isUnique        + "</td>";
                             pilotTbodyHtml += "<td>" + this.name            + "</td>";
                             pilotTbodyHtml += "<td>" + this.factionDesc     + "</td>";
-                            pilotTbodyHtml += "<td>" + this.shipType + " " + shipTemplate + "</td>";
+                            pilotTbodyHtml += "<td>" + popoverTemplate + " " + shipTemplate + "</td>";
                             pilotTbodyHtml += "<td>" + this.pilotAbility    + "</td>";
                             pilotTbodyHtml += "<td>" + this.availability    + "</td>";
                             pilotTbodyHtml += "</tr>";

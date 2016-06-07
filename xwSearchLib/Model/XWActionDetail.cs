@@ -12,6 +12,7 @@ namespace xwSearchLib.Model
         private const string CONDITIONAL_TRIGGER = "w/";
 
         public XW_SHIP_ACTIONS action { get; set; }
+        public string actionDesc { get; set; }
         public bool hasConditional { get; set; }
         public string conditional { get; set; }
 
@@ -39,16 +40,19 @@ namespace xwSearchLib.Model
             if (hasConditional)
             {
                 this.action = action;
+                this.actionDesc = action.ToString();
             }
             else
             {
                 if(xwFormatter.fixSpreadSheetBoolean(input))
                 {
                     this.action = action;
+                    this.actionDesc = action.ToString();
                 }
                 else
                 {
                     this.action = XW_SHIP_ACTIONS.NONE;
+                    this.actionDesc = XW_SHIP_ACTIONS.NONE.ToString();
                 }
             }
         }

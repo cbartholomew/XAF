@@ -13,6 +13,7 @@ namespace xwSearchLib.Model
         private const string CONDITIONAL_NUMBER_TRIGGER = "or";
 
         public XW_TYPE slotType { get; set; }
+        public string slotTypeDesc { get; set; }
         public int slotCount { get; set; }
         public bool hasConditional { get; set; }
         public string conditional { get; set; }
@@ -54,6 +55,7 @@ namespace xwSearchLib.Model
             if (hasConditional)
             {
                 this.slotType = type;
+                this.slotTypeDesc = type.ToString();
             }
             else
             {
@@ -63,15 +65,15 @@ namespace xwSearchLib.Model
                 {
                     this.slotType = type;
                     this.slotCount = slotCount;
+                    this.slotTypeDesc = type.ToString();
                 }
                 else
                 {
+                    this.slotTypeDesc = XW_TYPE.NONE.ToString();
                     this.slotType = XW_TYPE.NONE;
                     this.slotCount = 0;
                 }
             }
         }
-
-
     }
 }

@@ -114,7 +114,7 @@ namespace xwConsole
             //DoSpeechSplitByPhrases(upgrades, pilots);
             //DoSpeechSplitByWords(upgrades, pilots);
             //DoXWDictionaryBuild(upgrades, pilots);
-            //DoCreateJSONFiles(upgrades, pilots);
+            DoCreateJSONFiles(upgrades, pilots);
             //DoGetXWSpeechParts();
         }
     }
