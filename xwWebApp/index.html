@@ -14,6 +14,7 @@
     </script>
 </head>
 <body>
+  
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -58,11 +59,11 @@
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Pilots (<label id="pilot_count">0</label>)
+                                        Pilots (<label id="pilot_count">0</label> Found) [click for details]
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
                                     <!--Pilots Panel-->
                                     <div class="table-responsive">
@@ -74,7 +75,7 @@
                                                     <th>Unique?</th>
                                                     <th>Name</th>
                                                     <th>Faction</th>
-                                                    <th>Ship [p/h/a/s]</th>
+                                                    <th>Ship</th>
                                                     <th>Ability</th>
                                                     <th>Availability</th>
                                                 </tr>
@@ -89,7 +90,7 @@
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Upgrades (<label id="upgrade_count">0</label>)
+                                        Upgrades (<label id="upgrade_count">0</label> Found) [click for details]
                                     </a>
                                 </h4>
                             </div>
@@ -118,6 +119,7 @@
                 </div>
             </div>
         </div>
+
         <div class="loading"></div>
 
 </body>

@@ -1,4 +1,117 @@
-﻿/* Absolute Center Spinner */
+﻿v[class*="icon-"] {
+  display: inline-block;
+}
+
+.icon-barrel-roll {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -672px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-focus {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -2735px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-target-lock {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -7392px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-evade {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -2527px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-cloak {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -1357px ;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-boost {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0px -865px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-slam {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -6641px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-primary {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -4865px;
+  color: #cd1b3d;  
+  width:  25px;
+  height:  25px;
+}
+
+.icon-agility {
+  background-image: url('../images/icons-sec3098ff66.png');
+  background-position: 0 -152px;
+  color: #6dbe45;
+  width: 25px;
+  height: 25px;
+}
+
+.icon-hull {
+  background-image: url('../images/icons-sec3098ff66.png');   
+  background-position: 0 -3354px;
+  color: #eeea1e;
+  width:  25px;
+  height:  25px;
+}
+
+.icon-shield {
+  background-image: url('../images/icons-sec3098ff66.png');    
+  background-position: 0 -6446px;
+  color: #7fd5e7;
+  width:  25px;
+  height:  25px;
+}
+
+.icon-rebel {
+    background-image: url('../images/icons-sec3098ff66.png');    
+    background-position: 0 -5158px;
+    height: 26px;
+    text-align: center;
+    width: 22px;
+}
+
+.icon-empire {
+    background-image: url('../images/icons-sec3098ff66.png');    
+    background-position: 0 -2153px;
+    height: 26px;
+    text-align: center;
+    width: 22px;
+}
+
+.icon-scum {
+    background-image: url('../images/icons-sec3098ff66.png');   
+    background-position: 0 -5802px;
+    height: 26px;
+    text-align: center;
+    width: 22px;
+}
+
+.pilot-skill {
+    color: #f57f20;
+}
+
+/* Absolute Center Spinner */
 .loading {
   position: fixed;
   z-index: 999;

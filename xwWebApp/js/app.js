@@ -10,6 +10,8 @@ var xwUpgradeCount = $("#upgrade_count");
 
 
 var optionTemplate = ("<option value='#VALUE#'>#LABEL#</option>");
+var popoverTemplate = "<button type='button' id='#ID#' class='btn btn-sm btn-dark' data-toggle='popover' title='#SHIP_NAME_TITLE#' data-content='#CONTENT#'>#SHIP_NAME#</button>";
+var iconTemplate    = "<v class='#ICON#'></v>";
 var xwFinder = {
     "init": function(parameter){
         var fn = {
@@ -67,8 +69,7 @@ var xwFinder = {
                         for (var faction in factions) {
                             var templateFaction = optionTemplate
                                 .replace("#VALUE#", factions[faction])
-                                .replace("#LABEL#", factions[faction]);
-
+                                .replace("#LABEL#", factions[faction]);                                                                        
                             factionHtml += templateFaction;
                         }
 
@@ -119,43 +120,117 @@ var xwFinder = {
                         var upgrades = data["upgrades"];
                         var pilotTbodyHtml = "";
                         var upgradeTbodyHtml = "";
-                        var popoverTemplate = "<button type='button' class='btn btn-sm btn-dark' data-toggle='popover' title='#SHIP_NAME_TITLE#' data-content='#CONTENT#'>#SHIP_NAME#</button>";
-
+              
                         /*
                             <th>Pilot Skill</th>  
                             <th>Squad Points</th>   
                             <th>Unique?</th>                                     
                             <th>Name</th>                                                                                       
                             <th>Faction</th>
-                            <th>Ship [p/h/a/s]</th>
+                            <th>Ship</th>
                             <th>Ability</th>
                             <th>Availability</th>
                         */                        
                         $(pilots).each(function (index) {
-                            var contentHtml = "";
-                            var actionDetailsHtml = "";
-                            var shipFeaturesHtml = "";
 
-                            // build pop over
-                            popoverTemplate = popoverTemplate.replace("#SHIP_NAME#", this.shipType);
-
+                            var contentHtml             = "";
+                            var actionDetailsHtml       = "";
+                            var shipFeaturesHtml        = "";
+                            var actionHtml              = "";
+                            var conditionalActionHtml   = "";
+                            var popoverHtml         = popoverTemplate;
+                            var iconHtml            = iconTemplate;                            
+                            var YesOrNo             = (this.isUnique) ? "Yes" : "No";                            
                             var shield              = this.shipMetaData.shieldValue;
                             var hull                = this.shipMetaData.hullValue;
                             var agility             = this.shipMetaData.agilityValue;
                             var primaryWeaponValue  = this.shipMetaData.primaryWeaponValue;
-                            var shipTemplate = 
-                                    "<span class='label label-danger'>" + primaryWeaponValue + "</span>"
-                                + "<span class='label label-success'>" + agility + "</span>"
-                                +  "<span class='label label-warning'>" + hull + "</span>"                            
-                                +  "<span class='label label-info'>" + shield + "</span>";
+                            var actionDetails = this.shipMetaData.actionDetails;
+                            
+                            $(actionDetails).each(function (index) {
+                                var iconCls = "";
+                                switch (this.actionDesc)
+                                {
+                                    case "TARGET_LOCK":
+                                        iconCls = "icon-target-lock";
+                                        break;
+                                    case "BARREL_ROLL":
+                                        iconCls = "icon-barrel-roll";
+                                        break;
+                                    case "BOOST":
+                                        iconCls = "icon-boost";
+                                        break;
+                                    case "CLOAK":
+                                        iconCls = "icon-cloak";
+                                        break;
+                                    case "EVADE":
+                                        iconCls = "icon-evade";
+                                        break;
+                                    case "FOCUS":
+                                        iconCls = "icon-focus";
+                                        break;
+                                    case "SLAM":
+                                        iconCls = "icon-slam";
+                                        break;
+                                }
 
+                                var icon = '<v class="' + iconCls + '"></v>&nbsp;';
+
+                                if (this.hasConditional){
+                                    conditionalActionHtml += icon + '<em>' + this.conditional + '</em>';
+                                } else {
+                                    actionDetailsHtml += icon
+                                }
+                            });
+
+                            var shipTemplate =
+                                 '<div>'
+                               + '<strong>Stats</strong>'
+                               + '<br>'
+                               + '<v class="icon-primary"></v><strong>' + primaryWeaponValue + "</strong>&nbsp;"
+                               + '<v class="icon-agility"></v><strong>' + agility + "</strong>&nbsp;"
+                               + '<v class="icon-hull"></v><strong>' + hull + "</strong>&nbsp;"
+                               + '<v class="icon-shield"></v><strong>' + shield + "</strong>&nbsp;"
+                               + '<br>'
+                               + '<strong>Avaliable Actions</strong>'
+                               + '<br>'
+                               + actionDetailsHtml
+                               + '<br>'
+                               + '<strong>Conditional Actions</strong>'
+                               + '<br>'
+                               + conditionalActionHtml
+                               + '<br>'
+                               + '<strong>Non-Standard Weapon</strong>'
+                               + '<br>'
+                               + '<em>' + this.nonStandardWeapon + '</em>';
+                               + '</div>';
+
+                            // build pop over
+                            popoverHtml = popoverHtml.replace("#SHIP_NAME#", this.shipType);
+                            popoverHtml = popoverHtml.replace("#SHIP_NAME_TITLE#", this.shipType);
+                            popoverHtml = popoverHtml.replace("#CONTENT#", shipTemplate);
+                            popoverHtml = popoverHtml.replace("#ID#", index);
+
+                            switch(this.factionDesc)
+                            {
+                                case "REBEL":
+                                    iconHtml = iconHtml.replace("#ICON#","icon-rebel");
+                                    break;
+                                case "IMPERIAL":
+                                    iconHtml = iconHtml.replace("#ICON#","icon-empire");
+                                    break;
+                                case "SCUM":
+                                    iconHtml = iconHtml.replace("#ICON#","icon-scum");
+                                    break;                              
+                            }
+                                                                                                              
                             pilotTbodyHtml += "<tr>";
-                            pilotTbodyHtml += "<td>" + this.pilotSkill      + "</td>";
+                            pilotTbodyHtml += "<td><p class='pilot-skill'><strong>" + this.pilotSkill      + "</strong></p></td>";
                             pilotTbodyHtml += "<td>" + this.squadPointCost  + "</td>";
-                            pilotTbodyHtml += "<td>" + this.isUnique        + "</td>";
+                            pilotTbodyHtml += "<td>" + YesOrNo + "</td>";
                             pilotTbodyHtml += "<td>" + this.name            + "</td>";
-                            pilotTbodyHtml += "<td>" + this.factionDesc     + "</td>";
-                            pilotTbodyHtml += "<td>" + popoverTemplate + " " + shipTemplate + "</td>";
+                            pilotTbodyHtml += "<td>" + iconHtml             + "</td>";
+                            pilotTbodyHtml += "<td>" + popoverHtml          + "</td>";
                             pilotTbodyHtml += "<td>" + this.pilotAbility    + "</td>";
                             pilotTbodyHtml += "<td>" + this.availability    + "</td>";
                             pilotTbodyHtml += "</tr>";
@@ -170,14 +245,14 @@ var xwFinder = {
                             <th>Availability</th>
                        */
                         $(upgrades).each(function (index) {
-
+                            var YesOrNo = (this.isUnique) ? "Yes" : "No";
                             upgradeTbodyHtml += "<tr>";
-                            upgradeTbodyHtml += "<td>" + this.points        + "</td>";
-                            upgradeTbodyHtml += "<td>" + this.name          + "</td>";
-                            upgradeTbodyHtml += "<td>" + this.isUnique      + "</td>";
-                            upgradeTbodyHtml += "<td>" + this.typeDesc      + "</td>";
-                            upgradeTbodyHtml += "<td>" + this.ability       + "</td>";
-                            upgradeTbodyHtml += "<td>" + this.availability  + "</td>";
+                            upgradeTbodyHtml += "<td>" + this.points                    + "</td>";
+                            upgradeTbodyHtml += "<td>" + this.name                      + "</td>";
+                            upgradeTbodyHtml += "<td>" + YesOrNo + "</td>";
+                            upgradeTbodyHtml += "<td>" + this.typeDesc                  + "</td>";
+                            upgradeTbodyHtml += "<td>" + this.ability                   + "</td>";
+                            upgradeTbodyHtml += "<td>" + this.availability              + "</td>";
                             upgradeTbodyHtml += "</tr>";
 
                         });
@@ -194,6 +269,19 @@ var xwFinder = {
                     complete: function () {
                         xwLoading.hide();
                         xwSearch.prop("disabled", false);
+
+                        var popoverOptions = {
+                            html: true
+                        };
+
+                        $(function () {
+                            $('[data-toggle="popover"]').popover(popoverOptions);
+
+                            $('[data-toggle="popover"]').on('click', function (e) {
+                                $('[data-toggle="popover"]').not(this).popover('hide');
+                            });
+                        })
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(errorThrown);
