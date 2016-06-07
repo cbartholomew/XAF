@@ -145,8 +145,9 @@ var xwFinder = {
                             var hull                = this.shipMetaData.hullValue;
                             var agility             = this.shipMetaData.agilityValue;
                             var primaryWeaponValue  = this.shipMetaData.primaryWeaponValue;
-                            var actionDetails = this.shipMetaData.actionDetails;
-                            
+                            var actionDetails       = this.shipMetaData.actionDetails;
+                            var nonStandardWeapon = (this.shipMetaData.nonStandardWeapon == "") ? "None" : this.shipMetaData.nonStandardWeapon;
+                            var shipTitle = (this.shipMetaData.shipTitle == "") ? "None" : this.shipMetaData.shipTitle;
                             $(actionDetails).each(function (index) {
                                 var iconCls = "";
                                 switch (this.actionDesc)
@@ -202,7 +203,11 @@ var xwFinder = {
                                + '<br>'
                                + '<strong>Non-Standard Weapon</strong>'
                                + '<br>'
-                               + '<em>' + this.nonStandardWeapon + '</em>';
+                               + '<em>' + nonStandardWeapon + '</em>'
+                               + '<br>'
+                               + '<strong>Title</strong>'
+                               + '<br>'
+                               + '<em>' + shipTitle + '</em>'
                                + '</div>';
 
                             // build pop over
