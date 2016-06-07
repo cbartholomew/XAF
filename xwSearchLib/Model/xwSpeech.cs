@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace xwSearchLib.Model
 {
-    public class xwSpeech
+    public class XWSpeech
     {
         public class word
         {
@@ -20,7 +20,7 @@ namespace xwSearchLib.Model
         private List<Pilot> pilots { get; set; }
         private List<Upgrade> upgrades { get; set; }
         
-        public xwSpeech()
+        public XWSpeech()
         {
             this.listOfWords = new Dictionary<string, int>();
             this.listOfPhrases = new word();
@@ -30,7 +30,7 @@ namespace xwSearchLib.Model
 
         }
 
-        public xwSpeech(List<Pilot> pilots, List<Upgrade> upgrades)
+        public XWSpeech(List<Pilot> pilots, List<Upgrade> upgrades)
         {
             this.pilots = pilots;
             this.upgrades = upgrades;
@@ -39,9 +39,9 @@ namespace xwSearchLib.Model
             this.justWordList = new List<string>();
         }
 
-        public xwSpeech.word getWord(string word)
+        public XWSpeech.word getWord(string word)
         {
-            xwSpeech.word output = new xwSpeech.word();
+            XWSpeech.word output = new XWSpeech.word();
 
             this.listOfPhrases.nextWord.TryGetValue(word, out output);
 

@@ -27,7 +27,7 @@ namespace xwConsole
 
         static void DoXWDictionaryBuild(List<Upgrade> upgrades, List<Pilot> pilots)
         {
-            xwSpeech speech = new xwSpeech(pilots, upgrades);
+            XWSpeech speech = new XWSpeech(pilots, upgrades);
 
             speech.splitIntoWords();
 
@@ -58,7 +58,7 @@ namespace xwConsole
 
         static void DoSpeechSplitByWords(List<Upgrade> upgrades, List<Pilot> pilots)
         {
-            xwSpeech speech = new xwSpeech(pilots, upgrades);
+            XWSpeech speech = new XWSpeech(pilots, upgrades);
            
             speech.splitIntoWords();
 
@@ -71,7 +71,7 @@ namespace xwConsole
 
         static void DoSpeechSplitByPhrases(List<Upgrade> upgrades, List<Pilot> pilots)
         {
-            xwSpeech speech = new xwSpeech(pilots, upgrades);
+            XWSpeech speech = new XWSpeech(pilots, upgrades);
             
             speech.splitIntoPhrases();
             

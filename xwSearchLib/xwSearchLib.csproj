@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Configuration\xwSearch.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -72,7 +71,7 @@
     <Compile Include="Utility\xwFormatter.cs" />
     <Compile Include="Utility\xwJSONSerializer.cs" />
     <Compile Include="Utility\xwSearchHandler.cs" />
-    <Compile Include="Model\xwSpeech.cs" />
+    <Compile Include="Model\XWSpeech.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

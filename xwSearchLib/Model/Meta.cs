@@ -14,6 +14,12 @@ namespace xwSearchLib.Model
         public const string PILOT_SHEET_START = "A";
         public const string PILOT_SHEET_END = "AI";
 
+        public enum SEARCH_TYPE 
+        { 
+            BASIC,
+            BY_SQUAD_POINTS
+        }
+
         public enum PATH_TYPE
         {
             VERB,
