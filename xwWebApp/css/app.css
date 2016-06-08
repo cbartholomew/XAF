@@ -107,9 +107,117 @@
     width: 22px;
 }
 
+.icon-type-ASTROMECHS {
+  background-image: url('../images/astromech.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-BOMBS{
+  background-image: url('../images/bomb.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-CANNONS{
+    background-image: url('../images/cannon.png');
+    width: 16px;
+    height: 16px;
+    background-repeat:no-repeat;
+}
+.icon-type-CREW_MEMBERS{
+    background-image: url('../images/crew.png');
+    width: 16px;
+    height: 16px;
+    background-repeat:no-repeat;
+}
+.icon-type-ELITE_TALENTS{
+  background-image: url('../images/talent.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-ILLICIT_UPGRADE{
+  background-image: url('../images/illicit.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-MISSILES{
+  background-image: url('../images/missile.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-MODIFICATIONS{
+  background-image: url('../images/modification.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-SALVAGED_ASTROMECH{
+  background-image: url('../images/salvaged_astromech.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-SYSTEM_UPGRADE{
+  background-image: url('../images/system.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-TECH{
+  background-image: url('../images/tech.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-TITLES{
+  background-image: url('../images/title.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-TORPEDOES{
+  background-image: url('../images/torpedo.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+.icon-type-TURRETS {
+  background-image: url('../images/turret.png');
+  width: 16px;
+  height: 16px;
+  background-repeat:no-repeat;
+}
+
+.stat-font-style {
+    font-family: 'Aldrich', sans-serif;
+    /*font-size: 30pt;*/
+    font-weight: bold;
+}
+
 .pilot-skill {
     color: #f57f20;
 }
+
+.text-primary-weapon {
+    color: #cd1b3d;
+}
+
+.text-agility {
+    color: #6dbe45;
+}
+
+.text-hull {
+    color: #eeea1e;
+}
+
+.text-shield {
+    color: #7fd5e7;
+}
+
 
 /* Absolute Center Spinner */
 .loading {
