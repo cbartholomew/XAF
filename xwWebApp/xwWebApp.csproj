@@ -57,7 +57,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\astromech.png" />
+    <Content Include="images\bomb.png" />
+    <Content Include="images\cannon.png" />
+    <Content Include="images\crew.png" />
     <Content Include="images\icons-sec3098ff66.png" />
+    <Content Include="images\illicit.png" />
+    <Content Include="images\missile.png" />
+    <Content Include="images\modification.png" />
+    <Content Include="images\salvaged_astromech.png" />
+    <Content Include="images\system.png" />
+    <Content Include="images\talent.png" />
+    <Content Include="images\tech.png" />
+    <Content Include="images\title.png" />
+    <Content Include="images\torpedo.png" />
+    <Content Include="images\turret.png" />
     <Content Include="search.ashx" />
     <Content Include="speech.ashx" />
     <Content Include="css\bootstrap-theme.css.map" />
