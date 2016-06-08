@@ -98,7 +98,7 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\Hosting\\\\4173543\\\\html\\\\XAF\\\\bin\\\\Dictionary\\\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\Hosting\\\\4173543\\\\html\\\\aoitsolutions.com\\\\XAF\\\\bin\\\\Dictionary\\\\")]
         public string DICTIONARY_OUTPUT {
             get {
                 return ((string)(this["DICTIONARY_OUTPUT"]));
