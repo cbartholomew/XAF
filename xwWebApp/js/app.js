@@ -193,11 +193,25 @@ var xwFinder = {
                                 var icon = '<v class="' + iconCls + '"></v><em>x' + this.slotCount + '</em>&nbsp;';
 
                                 if (this.hasConditional) {
+                                    
                                     conditionalShipDetailsHtml += icon + '<em>' + this.conditional + '</em>';
+                                    if ((index % 2) != 0) {
+                                        conditionalShipDetailsHtml += "<br>";
+                                    }
+
                                 } else {
+                                   
                                     shipDetailsHtml += icon
+
+                                    if ((index % 2) != 0) {
+                                        shipDetailsHtml += "<br>";
+                                    }
                                 }
                             });
+
+                            if (conditionalShipDetailsHtml == "") {
+                                conditionalShipDetailsHtml = "<em>None</em>";
+                            }
 
                             var shipTemplate =
                                  '<div>'
@@ -303,6 +317,8 @@ var xwFinder = {
 
                         var popoverOptions = {
                             html: true
+                           
+
                         };
 
                         $(function () {
