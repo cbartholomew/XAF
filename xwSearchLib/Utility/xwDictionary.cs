@@ -11,6 +11,53 @@ namespace xwSearchLib.Utility
 {
     public class xwDictionary : Meta
     {
+        public static XW_SEARCH_TYPE getSearchType(string input)
+        {
+            XW_SEARCH_TYPE searchType;
+
+            switch (input)
+            {
+                case "standard":
+                    searchType = XW_SEARCH_TYPE.STANDARD;
+                    break;
+                case "cost":
+                    searchType = XW_SEARCH_TYPE.COST;
+                    break;
+                case "name":
+                    searchType = XW_SEARCH_TYPE.NAME;
+                    break;
+                default:
+                    searchType = XW_SEARCH_TYPE.STANDARD;
+                    break;
+            }
+
+            return searchType;
+        }
+
+        public static XW_SEARCH_OPERATOR getSearchOperator(string input)
+        {
+            XW_SEARCH_OPERATOR searchOperator;
+
+            switch (input)
+            {
+                case "less than equal":
+                    searchOperator = XW_SEARCH_OPERATOR.LESS_THAN;
+                    break;
+                case "more than equal":
+                    searchOperator = XW_SEARCH_OPERATOR.MORE_THAN;
+                    break;
+                case "equal":
+                    searchOperator = XW_SEARCH_OPERATOR.EQUAL_TO;
+                    break;
+                default:
+                    searchOperator = XW_SEARCH_OPERATOR.LESS_THAN;
+                    break;
+            }
+
+            return searchOperator;
+
+        }
+
         public static List<string> getAdVerbs(List<string> listOfWords)
         {
             xwSearch searchConfig = new xwSearch();

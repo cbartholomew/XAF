@@ -14,10 +14,19 @@ namespace xwSearchLib.Model
         public const string PILOT_SHEET_START = "A";
         public const string PILOT_SHEET_END = "AI";
 
-        public enum SEARCH_TYPE 
+
+        public enum XW_SEARCH_TYPE 
         { 
-            BASIC,
-            BY_SQUAD_POINTS
+            STANDARD,
+            COST,
+            NAME
+        }
+
+        public enum XW_SEARCH_OPERATOR
+        { 
+            LESS_THAN,
+            MORE_THAN,
+            EQUAL_TO        
         }
 
         public enum PATH_TYPE
