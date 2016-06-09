@@ -125,6 +125,7 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IS_LOCAL {
             get {
                 return ((bool)(this["IS_LOCAL"]));
