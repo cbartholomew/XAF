@@ -24,131 +24,156 @@
             </div>
         </div>
     </nav>
-        <div class="container" id="content">
-            <div class="row">
-                <div class="col-xs-12 col-lg-12">
-                    <form name="standard">
-                        <div class ="form-group">
-                            <h5>Standard Search</h5>
-                        </div>
-                        <div class="form-group">
-                            <label for="xw_noun">Action</label>
-                            <select class="form-control" id="xw_verb">
-                                <option selected="selected">Select Action</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="xw_noun">Feature</label>
-                            <select class="form-control" id="xw_noun">
-                                <option selected="selected">Select Feature</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="xw_faction">Faction</label>
-                            <select class="form-control" id="xw_faction"></select>
-                        </div>
-                        <div class="form-group">
-                            <label class="error_text"></label>
-                        </div>
-                        <button type="button" id="standard" class="btn btn-primary btn-block search">Search</button>
-                    </form>
-                    <form name="cost">
-                        <div class="form-group">
-                            <h5>Cost Search</h5>
-                        </div>
-                        <div class="form-group">
-                            <label for="xw_cost">Cost</label>
-                            <input type="number" class="form-control" id="xw_cost" />
-                        </div>
-                        <div class="form-group">
-                            <label for="xw_operator">Operator</label>
-                            <select class="form-control" id="xw_operator">
-                                <option selected="selected" value="less than equal"><=</option>
-                                <option value="more than equal">>=</option>
-                                <option value="equal">=</option>
-                            </select>
-                        </div>                       
-                        <div class="form-group">
-                            <label class="error_text"></label>
-                        </div>
-                        <button type="button" id="cost" class="btn btn-primary btn-block search">Search</button>
-                    </form>
-                    <form name="name">
-                        <div class="form-group">
-                            <h5>Name Search</h5>
-                        </div>
-                        <div class="form-group">
-                            <label for="xw_name">Name</label>
-                            <input type="text" class="form-control" id="xw_name" />
-                        </div>                        
-                        <div class="form-group">
-                            <label class="error_text"></label>
-                        </div>
-                        <button type="button" id="name" class="btn btn-primary btn-block search">Search</button>
-                    </form>
+    <div class="container" id="content">
+        <div class="row">
+            <div class="col-xs-12 col-lg-12">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#standard_div" aria-controls="standard_div" role="tab" data-toggle="tab">
+                            Standard
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#cost_div" aria-controls="cost_div" role="tab" data-toggle="tab">
+                            By Cost
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#name_div" aria-controls="name_div" role="tab" data-toggle="tab">
+                            By Name
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="standard_div">
+                        <form name="standard">
+                            <div class="form-group">
+                                <h5>Standard Search</h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="xw_noun">Action</label>
+                                <select class="form-control" id="xw_verb">
+                                    <option selected="selected">Select Action</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="xw_noun">Feature</label>
+                                <select class="form-control" id="xw_noun">
+                                    <option selected="selected">Select Feature</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="xw_faction">Faction</label>
+                                <select class="form-control" id="xw_faction"></select>
+                            </div>
+                            <div class="form-group">
+                                <label class="error_text"></label>
+                            </div>
+                            <button type="button" id="standard" class="btn btn-primary btn-block search">Search</button>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="cost_div">
+                        <form name="cost">
+                            <div class="form-group">
+                                <h5>Cost Search</h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="xw_cost">Cost</label>
+                                <input type="number" class="form-control" id="xw_cost" />
+                            </div>
+                            <div class="form-group">
+                                <label for="xw_operator">Operator</label>
+                                <select class="form-control" id="xw_operator">
+                                    <option selected="selected" value="less than equal"><=</option>
+                                    <option value="more than equal">>=</option>
+                                    <option value="equal">=</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="error_text"></label>
+                            </div>
+                            <button type="button" id="cost" class="btn btn-primary btn-block search">Search</button>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="name_div">
+                        <form name="name">
+                            <div class="form-group">
+                                <h5>Name Search</h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="xw_name">Name</label>
+                                <input type="text" class="form-control" id="xw_name" />
+                            </div>
+                            <div class="form-group">
+                                <label class="error_text"></label>
+                            </div>
+                            <button type="button" id="name" class="btn btn-primary btn-block search">Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <br />
-            <div class="row">
-                <div class="col-xs-12 col-lg-12">
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Pilots (<label id="pilot_count">0</label> Found) [click for details]
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    <!--Pilots Panel-->
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Pilot Skill</th>
-                                                    <th>Squad Points</th>
-                                                    <th>Unique?</th>
-                                                    <th>Name</th>
-                                                    <th>Faction</th>
-                                                    <th>Ship (click for details)</th>
-                                                    <th>Ability</th>
-                                                    <th>Availability</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="pilot_tbody"></tbody>
-                                        </table>
-                                    </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-lg-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Pilots (<label id="pilot_count">0</label> Found) [click for details]
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <!--Pilots Panel-->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Pilot Skill</th>
+                                                <th>Squad Points</th>
+                                                <th>Unique?</th>
+                                                <th>Name</th>
+                                                <th>Faction</th>
+                                                <th>Ship (click for details)</th>
+                                                <th>Ability</th>
+                                                <th>Availability</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="pilot_tbody"></tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingTwo">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Upgrades (<label id="upgrade_count">0</label> Found) [click for details]
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-                                    <!--Upgrades Panel-->
-                                    <div class="table-responsive">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-                                                    <th>Squad Points</th>
-                                                    <th>Name</th>
-                                                    <th>Unique?</th>
-                                                    <th>Type</th>
-                                                    <th>Ability</th>
-                                                    <th>Availability</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="upgrade_tbody"></tbody>
-                                        </table>
-                                    </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Upgrades (<label id="upgrade_count">0</label> Found) [click for details]
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <!--Upgrades Panel-->
+                                <div class="table-responsive">
+                                    <table class="table ">
+                                        <thead>
+                                            <tr>
+                                                <th>Squad Points</th>
+                                                <th>Name</th>
+                                                <th>Unique?</th>
+                                                <th>Type</th>
+                                                <th>Ability</th>
+                                                <th>Availability</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="upgrade_tbody"></tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -156,6 +181,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <div class="loading"></div>
 
