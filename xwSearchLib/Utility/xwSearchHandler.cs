@@ -19,12 +19,16 @@ namespace xwSearchLib.Utility
             XWSearchResult searchResult = new XWSearchResult();
 
             // upgrades w/ search 
-            List<Upgrade> upgradesWithVerb = upgrades.FindAll(u => u.ability.Contains(verb));
-            List<Upgrade> upgradesWithVerbAndNoun = upgradesWithVerb.FindAll(u => u.ability.Contains(noun));
+            List<Upgrade> upgradesWithVerb = upgrades.FindAll(u => u.ability.IndexOf(verb,
+                StringComparison.OrdinalIgnoreCase) >= 0);
+            List<Upgrade> upgradesWithVerbAndNoun = upgradesWithVerb.FindAll(u => u.ability.IndexOf(noun, 
+                StringComparison.OrdinalIgnoreCase) >= 0);
 
             // pilot w/ search
-            List<Pilot> pilotsWithVerb = pilots.FindAll(p => p.pilotAbility.Contains(verb));
-            List<Pilot> pilotsWithVerbAndNoun = pilotsWithVerb.FindAll(p => p.pilotAbility.Contains(noun));
+            List<Pilot> pilotsWithVerb = pilots.FindAll(p => p.pilotAbility.IndexOf(verb,
+                StringComparison.OrdinalIgnoreCase) >= 0);
+            List<Pilot> pilotsWithVerbAndNoun = pilotsWithVerb.FindAll(p => p.pilotAbility.IndexOf(noun,
+                StringComparison.OrdinalIgnoreCase) >= 0);
 
             // faction specific
             if (faction != XW_FACTION.ALL) 
@@ -70,9 +74,13 @@ namespace xwSearchLib.Utility
 
             XWSearchResult searchResult = new XWSearchResult();
             // upgrades w/ search 
-            List<Upgrade> upgradesWithName = upgrades.FindAll(u => u.name.Contains(name));
+
+            List<Upgrade> upgradesWithName = upgrades.FindAll(u => u.name.IndexOf(name, 
+                StringComparison.OrdinalIgnoreCase) >= 0);
+
             // pilots w/ search 
-            List<Pilot> pilotsWithName   = pilots.FindAll(p => p.name.Contains(name));
+            List<Pilot> pilotsWithName = pilots.FindAll(p => p.name.IndexOf(name, 
+                StringComparison.OrdinalIgnoreCase) >= 0);
 
             searchResult.upgrades = upgradesWithName;
             searchResult.pilots = pilotsWithName;

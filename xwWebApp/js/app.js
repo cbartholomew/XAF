@@ -7,7 +7,9 @@ var xwPilotTbody = $(".pilot_tbody");
 var xwPilotCount = $("#pilot_count");
 var xwUpgradeTbody = $(".upgrade_tbody");
 var xwUpgradeCount = $("#upgrade_count");
-
+var xwCostNumberInput = $("#xw_cost");
+var xwCostOperator = $("#xw_operator");
+var xwName = $("#xw_name");
 
 var optionTemplate = ("<option value='#VALUE#'>#LABEL#</option>");
 var popoverTemplate = "<button type='button' id='#ID#' class='btn btn-sm btn-dark' data-toggle='popover' title='#SHIP_NAME_TITLE#' data-content='#CONTENT#'>#SHIP_NAME# &nbsp;<i class='glyphicon glyphicon-eye-open'></i></button>";
@@ -128,11 +130,61 @@ var xwFinder = {
                     }
                 });
             },
-            "cost": function () {
+            "cost": function () {                
+                var cost = xwCostNumberInput.val();
+                var operator = xwCostOperator.val();
+                var queryString = [];
 
+                queryString[0] = "method=cost";
+                queryString[1] = "operator=" + operator;
+                queryString[2] = "cost=" + cost;
+
+                $.ajax({
+                    url: "search.ashx?" + queryString.join('&'),
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",
+                    beforeSend: function () {
+                        xwLoading.show();
+                        xwSearch.prop("disabled", true);
+                    },
+                    success: function (data) {
+                        xwFinder.search("loadSearchResult", data);
+                    },
+                    complete: function () {
+                        xwLoading.hide();
+                        xwSearch.prop("disabled", false);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
             },
-            "name": function () {
+            "name": function () {                
+                var name = xwName.val();
+                var queryString = [];
 
+                queryString[0] = "method=name";
+                queryString[1] = "name=" + name;
+
+                $.ajax({
+                    url: "search.ashx?" + queryString.join('&'),
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",
+                    beforeSend: function () {
+                        xwLoading.show();
+                        xwSearch.prop("disabled", true);
+                    },
+                    success: function (data) {
+                        xwFinder.search("loadSearchResult", data);
+                    },
+                    complete: function () {
+                        xwLoading.hide();
+                        xwSearch.prop("disabled", false);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
             },
             "loadSearchResult": function () {
                 console.log(data)
