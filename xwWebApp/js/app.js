@@ -196,21 +196,21 @@ var xwFinder = {
                                     
                                     conditionalShipDetailsHtml += icon + '<em>' + this.conditional + '</em>';
                                     if ((index % 2) != 0) {
-                                        conditionalShipDetailsHtml += "<br>";
+                                        conditionalShipDetailsHtml += '<br>';
                                     }
-
+                                    conditionalShipDetailsHtml = conditionalShipDetailsHtml.replace("'", "");
                                 } else {
                                    
                                     shipDetailsHtml += icon
 
                                     if ((index % 2) != 0) {
-                                        shipDetailsHtml += "<br>";
+                                        shipDetailsHtml += '<br>';
                                     }
                                 }
                             });
 
                             if (conditionalShipDetailsHtml == "") {
-                                conditionalShipDetailsHtml = "<em>None</em>";
+                                conditionalShipDetailsHtml = '<em>None</em>';
                             }
 
                             var shipTemplate =
@@ -237,7 +237,7 @@ var xwFinder = {
                                + '<br>'
                                + '<strong>Title</strong>'
                                + '<br>'
-                               + '<em>' + shipTitle + '</em>'
+                               + '<em>' + shipTitle.replace("'","") + '</em>'
                                + '<br>'
                                + '<strong>Conditional Actions/Upgrades</strong>'
                                + '<br>'
