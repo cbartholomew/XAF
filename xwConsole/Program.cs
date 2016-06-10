@@ -71,10 +71,77 @@ namespace xwConsole
 
         static void DoSpeechSplitByPhrases(List<Upgrade> upgrades, List<Pilot> pilots)
         {
-            XWSpeech speech = new XWSpeech(pilots, upgrades);
+            string phrase = "assign focus";
             
-            speech.splitIntoPhrases();
-            
+            XWSearchResult results = new XWSearchResult();
+            results.pilots = pilots;
+            results.upgrades = upgrades;
+
+            List<string> searchWordList = phrase.Split(' ').ToList();
+
+            foreach (string w in searchWordList)
+            {
+               results = xwSearchHandler.search(
+               w,
+               true,
+               results.upgrades,
+               results.pilots);
+            }
+           
+            foreach (Pilot pilot in results.pilots)
+            {
+
+                List<string> phrases = pilot.pilotAbility.Split(' ').ToList();
+
+                phrases.RemoveAll(x => x == "");
+
+                XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
+
+                speech.splitIntoPhrases();
+
+                XWSpeech.word tmpWord = recursiveWordFind(speech.listOfPhrases, 0, phrases);
+
+                foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
+                {
+                    Console.WriteLine(item.Value.previousWord + " ---> " + item.Key.ToString());
+                    results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
+                }                
+            }
+
+            foreach (Upgrade upgrade in results.upgrades)
+            {
+                List<string> phrases = upgrade.ability.Split(' ').ToList();
+
+                phrases.RemoveAll(x => x == "");
+
+                XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
+
+                speech.splitIntoPhrases();
+
+                XWSpeech.word tmpWord = recursiveWordFind(speech.listOfPhrases, 0, phrases);
+
+                foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
+                {
+                    Console.WriteLine(item.Value.previousWord + " ---> " + item.Key.ToString());
+                    results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
+                }
+            }
+
+        }
+
+        static XWSpeech.word recursiveWordFind(XWSpeech.word phrase, int index, List<string> builtPhrase)
+        {
+            if (index >= builtPhrase.Count)
+            {
+                return phrase;
+            }
+
+            string nextWordInPhrase = XWSpeech.cleanPunctuation(builtPhrase[index].ToLower());
+
+            if (phrase.nextWord[nextWordInPhrase].hasValue)
+                return recursiveWordFind(phrase.nextWord[nextWordInPhrase], index + 1, builtPhrase);
+            else
+                return phrase;
         }
 
         static void DoCreateJSONFiles(List<Upgrade> upgrades, List<Pilot> pilots)
@@ -88,6 +155,7 @@ namespace xwConsole
 
         static void Main(string[] args)
         {
+            /*
             List<string[]> upgradeRows = xwExcel.createFromExcel(file_path, 
                 Meta.UPGRADES_SHEET_START, 
                 Meta.UPGRADES_SHEET_END,
@@ -109,12 +177,22 @@ namespace xwConsole
             {
                 pilots.Add(new Pilot(row));
             }
-        
+            */
+            List<Upgrade> upgrades = xwJSONSerializer.Deserialize<List<Upgrade>>(
+            System.IO.File.ReadAllText(
+            xwDictionary.getDictionaryPath(Meta.PATH_TYPE.UPGRADE_FILE)
+            ));
+
+            List<Pilot> pilots = xwJSONSerializer.Deserialize<List<Pilot>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.PILOT_FILE)
+                ));
+
             //DoSearch(upgrades, pilots);
-            //DoSpeechSplitByPhrases(upgrades, pilots);
+            DoSpeechSplitByPhrases(upgrades, pilots);
             //DoSpeechSplitByWords(upgrades, pilots);
             //DoXWDictionaryBuild(upgrades, pilots);
-            DoCreateJSONFiles(upgrades, pilots);
+            //DoCreateJSONFiles(upgrades, pilots);
             //DoGetXWSpeechParts();
         }
     }

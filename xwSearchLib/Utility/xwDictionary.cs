@@ -26,6 +26,9 @@ namespace xwSearchLib.Utility
                 case "name":
                     searchType = XW_SEARCH_TYPE.NAME;
                     break;
+                case "freetext":
+                    searchType = XW_SEARCH_TYPE.FREE_TEXT;
+                    break;
                 default:
                     searchType = XW_SEARCH_TYPE.STANDARD;
                     break;

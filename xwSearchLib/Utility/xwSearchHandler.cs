@@ -88,6 +88,27 @@ namespace xwSearchLib.Utility
             return searchResult;
         }
 
+        public static XWSearchResult search(string freeText, 
+            bool usePhrase, 
+            List<Upgrade> upgrades, 
+            List<Pilot> pilots) 
+        {
+            XWSearchResult searchResult = new XWSearchResult();
+            // upgrades w/ search 
+
+            List<Upgrade> upgradesWithName = upgrades.FindAll(u => u.ability.IndexOf(freeText,
+                StringComparison.OrdinalIgnoreCase) >= 0);
+
+            // pilots w/ search 
+            List<Pilot> pilotsWithName = pilots.FindAll(p => p.pilotAbility.IndexOf(freeText,
+                StringComparison.OrdinalIgnoreCase) >= 0);
+
+            searchResult.upgrades = upgradesWithName;
+            searchResult.pilots = pilotsWithName;
+
+            return searchResult;
+        }
+
         public static XWSearchResult search(
         int pointCost,
         XW_SEARCH_OPERATOR op,
@@ -119,6 +140,21 @@ namespace xwSearchLib.Utility
             searchResult.pilots = pilotsWithCost;
 
             return searchResult;
+        }
+
+        public static XWSpeech.word recursiveWordFind(XWSpeech.word phrase, int index, List<string> builtPhrase)
+        {
+            if (index >= builtPhrase.Count)
+            {
+                return phrase;
+            }
+
+            string nextWordInPhrase = XWSpeech.cleanPunctuation(builtPhrase[index].ToLower());
+
+            if (phrase.nextWord[nextWordInPhrase].hasValue)
+                return recursiveWordFind(phrase.nextWord[nextWordInPhrase], index + 1, builtPhrase);
+            else
+                return phrase;
         }
     }
 }

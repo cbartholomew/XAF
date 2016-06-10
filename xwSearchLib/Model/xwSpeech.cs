@@ -10,6 +10,7 @@ namespace xwSearchLib.Model
     {
         public class word
         {
+            public string previousWord { get; set; }
             public Dictionary<string,word> nextWord { get; set; }
             public bool hasValue { get; set; }
         }
@@ -61,7 +62,7 @@ namespace xwSearchLib.Model
                 
                 words.RemoveAll(x=>x.ToString() == "");
                 
-                recursiveBuild(words, 0, this.listOfPhrases);
+                recursiveBuild(words, 0, this.listOfPhrases, "");
             }
             foreach (Upgrade upgrade in this.upgrades)
             {
@@ -74,7 +75,7 @@ namespace xwSearchLib.Model
 
                 words.RemoveAll(x => x.ToString() == "");
 
-                recursiveBuild(words, 0, this.listOfPhrases);
+                recursiveBuild(words, 0, this.listOfPhrases,"");
             }
         }
 
@@ -128,7 +129,7 @@ namespace xwSearchLib.Model
             }
         }
 
-        private void recursiveBuild(List<string> words, int count, word wordHash)
+        private void recursiveBuild(List<string> words, int count, word wordHash, string previousWord)
         {
             if (count >= words.Count)
                 return;
@@ -136,20 +137,31 @@ namespace xwSearchLib.Model
             if (!wordHash.hasValue)
             {
                 wordHash.hasValue = true;
+                wordHash.previousWord = previousWord;
                 wordHash.nextWord = new Dictionary<string, word>();
             }
 
             if(!wordHash.nextWord.ContainsKey(words[count]))
             {
-                wordHash.nextWord.Add(words[count], new word() { nextWord = new Dictionary<string, word>(), hasValue = false });
+                wordHash.nextWord.Add(words[count], new word() { nextWord = new Dictionary<string, word>(), hasValue = false, previousWord = previousWord });
             }
             
             wordHash = wordHash.nextWord[words[count]];
 
-            recursiveBuild(words, count + 1, wordHash);
+            int indexPass = (count == 0) ? 0 : count - 1;
+
+            if (indexPass != 0)
+            {
+                recursiveBuild(words, count + 1, wordHash, String.Concat(previousWord, " ", words[indexPass]));
+            }
+            else 
+            {
+                recursiveBuild(words, count + 1, wordHash, words[indexPass]);
+            }
+            
         }
 
-        private string cleanPunctuation(string text)
+        public static string cleanPunctuation(string text)
         {
             string output = text;
 

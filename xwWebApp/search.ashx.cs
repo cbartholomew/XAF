@@ -28,6 +28,9 @@ namespace xwWebApp
                 case Meta.XW_SEARCH_TYPE.NAME:
                     processNameSearchRequest(context);
                     break;
+                case Meta.XW_SEARCH_TYPE.FREE_TEXT:
+                    processFreeTextSearch(context);
+                    break;
                 default:
                     break;
             }
@@ -124,6 +127,81 @@ namespace xwWebApp
             ctx.Response.Write(resultJSON);
 
             ctx.Response.End();        
+        }
+
+        private void processFreeTextSearch(HttpContext ctx)
+        {
+            ctx.Response.ContentType = "application/json";
+            var text = ctx.Request.QueryString["freetext"].ToString();
+
+            List<Upgrade> upgrades = xwJSONSerializer.Deserialize<List<Upgrade>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.UPGRADE_FILE)
+                ));
+
+            List<Pilot> pilots = xwJSONSerializer.Deserialize<List<Pilot>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.PILOT_FILE)
+                ));
+
+            XWSearchResult results = new XWSearchResult();
+
+            results.pilots = pilots;
+            results.upgrades = upgrades;
+
+            List<string> searchWordList = text.Split(' ').ToList();
+
+            foreach (string w in searchWordList)
+            {
+               results = xwSearchHandler.search(
+               w,
+               true,
+               results.upgrades,
+               results.pilots);
+            }
+           
+            foreach (Pilot pilot in results.pilots)
+            {
+
+                List<string> phrases = pilot.pilotAbility.Split(' ').ToList();
+
+                phrases.RemoveAll(x => x == "");
+
+                XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
+
+                speech.splitIntoPhrases();
+
+                XWSpeech.word tmpWord = xwSearchHandler.recursiveWordFind(speech.listOfPhrases, 0, phrases);
+
+                foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
+                {
+                    results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
+                }                
+            }
+
+            foreach (Upgrade upgrade in results.upgrades)
+            {
+                List<string> phrases = upgrade.ability.Split(' ').ToList();
+
+                phrases.RemoveAll(x => x == "");
+
+                XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
+
+                speech.splitIntoPhrases();
+
+                XWSpeech.word tmpWord = xwSearchHandler.recursiveWordFind(speech.listOfPhrases, 0, phrases);
+
+                foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
+                {                    
+                    results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
+                }
+            }
+
+            string resultJSON = xwJSONSerializer.Serialize<XWSearchResult>(results);
+
+            ctx.Response.Write(resultJSON);
+
+            ctx.Response.End();     
         }
 
         public bool IsReusable

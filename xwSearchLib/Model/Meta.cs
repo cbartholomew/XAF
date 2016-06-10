@@ -19,7 +19,8 @@ namespace xwSearchLib.Model
         { 
             STANDARD,
             COST,
-            NAME
+            NAME,
+            FREE_TEXT
         }
 
         public enum XW_SEARCH_OPERATOR
