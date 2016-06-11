@@ -72,6 +72,7 @@
     <Content Include="images\title.png" />
     <Content Include="images\torpedo.png" />
     <Content Include="images\turret.png" />
+    <Content Include="js\typeahead.bundle.js" />
     <Content Include="search.ashx" />
     <Content Include="speech.ashx" />
     <Content Include="css\bootstrap-theme.css.map" />

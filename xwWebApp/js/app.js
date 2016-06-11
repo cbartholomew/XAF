@@ -10,7 +10,8 @@ var xwUpgradeCount = $("#upgrade_count");
 var xwCostNumberInput = $("#xw_cost");
 var xwCostOperator = $("#xw_operator");
 var xwName = $("#xw_name");
-
+var xwFreeText = $("#xw_freetext");
+var phrases = [];
 var optionTemplate = ("<option value='#VALUE#'>#LABEL#</option>");
 var popoverTemplate = "<button type='button' id='#ID#' class='btn btn-sm btn-dark' data-toggle='popover' title='#SHIP_NAME_TITLE#' data-content='#CONTENT#'>#SHIP_NAME# &nbsp;<i class='glyphicon glyphicon-eye-open'></i></button>";
 var iconTemplate    = "<v class='#ICON#'></v>";
@@ -179,6 +180,33 @@ var xwFinder = {
                     },
                     complete: function () {
                         xwLoading.hide();
+                        xwSearch.prop("disabled", false);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            },
+            "freetext": function () {
+                var freetext = xwFreeText.val();
+                var queryString = [];
+
+                queryString[0] = "method=freetext";
+                queryString[1] = "freetext=" + freetext;
+
+                $.ajax({
+                    url: "search.ashx?" + queryString.join('&'),
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",
+                    beforeSend: function () {
+                        //xwLoading.show();
+                        xwSearch.prop("disabled", true);
+                    },
+                    success: function (data) {
+                        xwFinder.search("loadSearchResult", data);
+                    },
+                    complete: function () {
+                        //xwLoading.hide();
                         xwSearch.prop("disabled", false);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -391,8 +419,10 @@ var xwFinder = {
                     });
                 })
 
+            
             }
         }
         fn[parameter](data);
     }
 }
+

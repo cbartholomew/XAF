@@ -160,42 +160,42 @@ namespace xwWebApp
                results.pilots);
             }
            
-            foreach (Pilot pilot in results.pilots)
-            {
+            //foreach (Pilot pilot in results.pilots)
+            //{
 
-                List<string> phrases = pilot.pilotAbility.Split(' ').ToList();
+            //    List<string> phrases = pilot.pilotAbility.Split(' ').ToList();
 
-                phrases.RemoveAll(x => x == "");
+            //    phrases.RemoveAll(x => x == "");
 
-                XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
+            //    XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
 
-                speech.splitIntoPhrases();
+            //    speech.splitIntoPhrases();
 
-                XWSpeech.word tmpWord = xwSearchHandler.recursiveWordFind(speech.listOfPhrases, 0, phrases);
+            //    XWSpeech.word tmpWord = xwSearchHandler.recursiveWordFind(speech.listOfPhrases, 0, phrases);
 
-                foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
-                {
-                    results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
-                }                
-            }
+            //    foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
+            //    {
+            //        results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
+            //    }                
+            //}
 
-            foreach (Upgrade upgrade in results.upgrades)
-            {
-                List<string> phrases = upgrade.ability.Split(' ').ToList();
+            //foreach (Upgrade upgrade in results.upgrades)
+            //{
+            //    List<string> phrases = upgrade.ability.Split(' ').ToList();
 
-                phrases.RemoveAll(x => x == "");
+            //    phrases.RemoveAll(x => x == "");
 
-                XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
+            //    XWSpeech speech = new XWSpeech(results.pilots, results.upgrades);
 
-                speech.splitIntoPhrases();
+            //    speech.splitIntoPhrases();
 
-                XWSpeech.word tmpWord = xwSearchHandler.recursiveWordFind(speech.listOfPhrases, 0, phrases);
+            //    XWSpeech.word tmpWord = xwSearchHandler.recursiveWordFind(speech.listOfPhrases, 0, phrases);
 
-                foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
-                {                    
-                    results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
-                }
-            }
+            //    foreach (KeyValuePair<string, XWSpeech.word> item in tmpWord.nextWord)
+            //    {                    
+            //        results.phrases.Add(String.Concat(item.Value.previousWord, " ", item.Key.ToString()));
+            //    }
+            //}
 
             string resultJSON = xwJSONSerializer.Serialize<XWSearchResult>(results);
 
