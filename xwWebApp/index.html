@@ -35,21 +35,21 @@
                             Free Text
                         </a>
                     </li>
-                    <li role="presentation">
+                    <!--<li role="presentation">
                         <a href="#standard_div" aria-controls="standard_div" role="tab" data-toggle="tab">
                             Standard
                         </a>
-                    </li>
+                    </li>-->
                     <li role="presentation">
                         <a href="#cost_div" aria-controls="cost_div" role="tab" data-toggle="tab">
                             By Cost
                         </a>
                     </li>
-                    <li role="presentation">
+                    <!--<li role="presentation">
                         <a href="#name_div" aria-controls="name_div" role="tab" data-toggle="tab">
                             By Name
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="freetext_div">
@@ -64,7 +64,7 @@
                             <!--<button type="button" id="name" class="btn btn-primary btn-block search">Search</button>-->
                         </form>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="standard_div">
+                    <!--<div role="tabpanel" class="tab-pane" id="standard_div">
                         <form name="standard">
                             <div class="form-group">
                                 <h5>Standard Search</h5>
@@ -91,6 +91,7 @@
                             <button type="button" id="standard" class="btn btn-primary btn-block search">Search</button>
                         </form>
                     </div>
+                    -->
                     <div role="tabpanel" class="tab-pane" id="cost_div">
                         <form name="cost">
                             <div class="form-group">
@@ -111,9 +112,10 @@
                             <div class="form-group">
                                 <label class="error_text"></label>
                             </div>
-                            <button type="button" id="cost" class="btn btn-primary btn-block search">Search</button>
+                            <!--<button type="button" id="cost" class="btn btn-primary btn-block search">Search</button>-->
                         </form>
                     </div>
+                    <!--
                     <div role="tabpanel" class="tab-pane" id="name_div">
                         <form name="name">
                             <div class="form-group">
@@ -129,6 +131,7 @@
                             <button type="button" id="name" class="btn btn-primary btn-block search">Search</button>
                         </form>
                     </div>
+                        -->
                 </div>
             </div>
         </div>
@@ -207,18 +210,16 @@
 </html>
 <script src="js/app.js"></script>
 <script type="text/javascript">
-
-    $(".search").click(function () {
-        var searchMethod = $(this).attr("id");
-        xwFinder.search(searchMethod);
+    $("#xw_cost").keyup(function () {
+        if ($("#xw_cost").val().toString().length >= 0) {
+            xwFinder.search("cost");
+        }
     });
-    
     $("#xw_freetext").keyup(function () {
         if ($("#xw_freetext").val().toString().length >= 3)
         { 
             xwFinder.search("freetext");
         }
     });
-
     $(".loading").hide();
 </script>

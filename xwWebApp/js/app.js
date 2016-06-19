@@ -145,14 +145,14 @@ var xwFinder = {
                     contentType: "application/x-www-form-urlencoded",
                     dataType: "json",
                     beforeSend: function () {
-                        xwLoading.show();
+                        //xwLoading.show();
                         xwSearch.prop("disabled", true);
                     },
                     success: function (data) {
                         xwFinder.search("loadSearchResult", data);
                     },
                     complete: function () {
-                        xwLoading.hide();
+                        //xwLoading.hide();
                         xwSearch.prop("disabled", false);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -161,7 +161,7 @@ var xwFinder = {
                 });
             },
             "name": function () {                
-                var name = xwName.val();
+                var name = xwFreeText.val();    
                 var queryString = [];
 
                 queryString[0] = "method=name";
@@ -172,14 +172,14 @@ var xwFinder = {
                     contentType: "application/x-www-form-urlencoded",
                     dataType: "json",
                     beforeSend: function () {
-                        xwLoading.show();
+                        //xwLoading.show();
                         xwSearch.prop("disabled", true);
                     },
                     success: function (data) {
                         xwFinder.search("loadSearchResult", data);
                     },
                     complete: function () {
-                        xwLoading.hide();
+                        //xwLoading.hide();
                         xwSearch.prop("disabled", false);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -220,6 +220,11 @@ var xwFinder = {
                 var upgrades = data["upgrades"];
                 var pilotTbodyHtml = "";
                 var upgradeTbodyHtml = "";
+
+                if (pilots.length == 0 && upgrades.length == 0)
+                {
+                    xwFinder.search("name");
+                }
 
                 /*
                     <th>Pilot Skill</th>  
