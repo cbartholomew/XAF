@@ -215,17 +215,13 @@ var xwFinder = {
                 });
             },
             "loadSearchResult": function () {
-                console.log(data)
+                //console.log(data)
                 var pilots = data["pilots"];
                 var upgrades = data["upgrades"];
                 var pilotTbodyHtml = "";
                 var upgradeTbodyHtml = "";
 
-                if (pilots.length == 0 && upgrades.length == 0)
-                {
-                    xwFinder.search("name");
-                }
-
+    
                 /*
                     <th>Pilot Skill</th>  
                     <th>Squad Points</th>   

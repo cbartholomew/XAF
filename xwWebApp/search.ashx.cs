@@ -72,6 +72,12 @@ namespace xwWebApp
         private void processByCostSearchRequest(HttpContext ctx) 
         {
             ctx.Response.ContentType = "application/json";
+
+            if (ctx.Request.QueryString["cost"] == null)
+            {
+                return;         
+            }
+
             var op      = ctx.Request.QueryString["operator"].ToString();
             var cost    = ctx.Request.QueryString["cost"].ToString();
 
@@ -197,11 +203,13 @@ namespace xwWebApp
             //    }
             //}
 
-            string resultJSON = xwJSONSerializer.Serialize<XWSearchResult>(results);
+                string resultJSON = xwJSONSerializer.Serialize<XWSearchResult>(results);
 
-            ctx.Response.Write(resultJSON);
+                ctx.Response.Write(resultJSON);
 
-            ctx.Response.End();     
+                ctx.Response.End(); 
+            
+                
         }
 
         public bool IsReusable
