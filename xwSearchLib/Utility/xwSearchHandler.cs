@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using xwSearchLib.Model;
-
+using System.Text.RegularExpressions;
 namespace xwSearchLib.Utility
 {
     public class xwSearchHandler : Meta
@@ -155,6 +155,50 @@ namespace xwSearchLib.Utility
                 return recursiveWordFind(phrase.nextWord[nextWordInPhrase], index + 1, builtPhrase);
             else
                 return phrase;
+        }
+
+        public static Dictionary<string,List<string>> ShipTypeRequest(string freeText, List<string> ships) 
+        {
+            Dictionary<string, List<string>> output = new Dictionary<string, List<string>>();
+
+            List<string> y = freeText.Split(' ').ToList();
+
+            for (int i = 0; i < y.Count; i++)
+            {
+                List<string> tempOutput = new List<string>();
+                tempOutput = ships.FindAll(w => w.IndexOf(y[i], 
+                    StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                if (tempOutput.Count > 0) { 
+                    output.Add(y[i],tempOutput);
+                }
+            }
+            return output;
+        }
+
+        public static XWSearchResult filterByRequestedShip(List<Pilot> pilots, List<Upgrade> upgrade, string ship)
+        {
+            XWSearchResult result = new XWSearchResult();
+
+            List<Pilot> tempPilots = new List<Pilot>();
+
+            tempPilots = pilots.FindAll(p => p.shipType.IndexOf(ship, 
+                StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+            result.pilots = tempPilots;
+            result.upgrades = upgrade;
+
+            return result;
+        }
+
+        public static bool isUserRequestingFactionType(string freeText) 
+        {
+            return false;
+        }
+
+        public static bool isUserRequestingExtraActions(string freeText)
+        {
+            return false;
         }
     }
 }

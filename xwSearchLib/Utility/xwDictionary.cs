@@ -191,6 +191,12 @@ namespace xwSearchLib.Utility
                 case PATH_TYPE.UPGRADE_FILE:
                     path += searchConfig.UPGRADE_FILE;
                     break;
+                case PATH_TYPE.XW_SHIP_FILE:
+                    path += searchConfig.SHIPS_FILE;
+                    break;
+                case PATH_TYPE.XW_FACTION_FILE:
+                    path += searchConfig.FACTION_FILE;
+                    break;
                 default:
                     path += "PATH_NOT_FOUND";
                     break;

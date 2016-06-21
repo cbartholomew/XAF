@@ -99,6 +99,12 @@
     <None Include="Dictionary\xwing.data.verb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Dictionary\xwing.factions.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\xwing.ships.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Template\X-Wing Pilots, Upgrades and FAQ.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

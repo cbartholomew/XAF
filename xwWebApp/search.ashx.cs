@@ -150,6 +150,18 @@ namespace xwWebApp
                 xwDictionary.getDictionaryPath(Meta.PATH_TYPE.PILOT_FILE)
                 ));
 
+            List<string> ships = xwJSONSerializer.Deserialize<List<string>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_SHIP_FILE)
+                ));
+
+            List<string> factions = xwJSONSerializer.Deserialize<List<string>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_FACTION_FILE)
+                ));
+
+            Dictionary<string, List<string>> shipsFound = xwSearchHandler.ShipTypeRequest(text, ships);
+
             XWSearchResult results = new XWSearchResult();
 
             results.pilots = pilots;
@@ -157,15 +169,30 @@ namespace xwWebApp
 
             List<string> searchWordList = text.Split(' ').ToList();
 
-            foreach (string w in searchWordList)
+            foreach (string aWord in searchWordList)
             {
+               if (shipsFound.ContainsKey(aWord)) {
+                   continue; 
+               }
+
                results = xwSearchHandler.search(
-               w,
+               aWord,
                true,
                results.upgrades,
                results.pilots);
             }
-           
+
+            if (shipsFound.Count > 0)
+            {
+                foreach(string key in shipsFound.Keys)
+                {
+                    results = xwSearchHandler.filterByRequestedShip(
+                        results.pilots, 
+                        results.upgrades, 
+                        key);
+                }
+            }
+
             //foreach (Pilot pilot in results.pilots)
             //{
 

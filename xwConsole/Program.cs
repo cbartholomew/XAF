@@ -146,11 +146,37 @@ namespace xwConsole
 
         static void DoCreateJSONFiles(List<Upgrade> upgrades, List<Pilot> pilots)
         {
+            //StringBuilder shipText = new StringBuilder();
+            //StringBuilder factionText = new StringBuilder();
+            List<string> shipList = new List<string>();
+            List<string> factionList = new List<string>();
+            string shipText = "";
+            string factionText = "";
             string upgradeJSON = xwJSONSerializer.Serialize<List<Upgrade>>(upgrades);
             string pilotJSON = xwJSONSerializer.Serialize<List<Pilot>>(pilots);
+        
+
+            foreach (Pilot pilot in pilots)
+            {
+                if(!shipList.Contains(pilot.shipType))
+                {
+                    shipList.Add(pilot.shipType);
+                    //shipText.AppendLine(pilot.shipType);
+                }
+
+                if (!factionList.Contains(pilot.factionDesc))
+                {
+                    factionList.Add(pilot.factionDesc);
+                    //factionText.AppendLine(pilot.factionDesc);
+                }       
+            }
+            shipText = xwJSONSerializer.Serialize<List<string>>(shipList);
+            factionText = xwJSONSerializer.Serialize<List<string>>(factionList);
 
             System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\upgrades.in", upgradeJSON);
-            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\pilots.in", pilotJSON);        
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\pilots.in", pilotJSON);
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\xwing.ships.in", shipText.ToString());
+            System.IO.File.WriteAllText(@"C:\Users\Christopher\Source\Repos\XWingAbilityFinder\xwSearchLib\Dictionary\xwing.factions.in", factionText.ToString());    
         }
 
         static void Main(string[] args)
@@ -188,11 +214,22 @@ namespace xwConsole
                 xwDictionary.getDictionaryPath(Meta.PATH_TYPE.PILOT_FILE)
                 ));
 
+            List<string> ships = xwJSONSerializer.Deserialize<List<string>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_SHIP_FILE)
+                ));
+
+            List<string> factions = xwJSONSerializer.Deserialize<List<string>>(
+                System.IO.File.ReadAllText(
+                xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_FACTION_FILE)
+                ));
+
+
             //DoSearch(upgrades, pilots);
-            DoSpeechSplitByPhrases(upgrades, pilots);
+            //DoSpeechSplitByPhrases(upgrades, pilots);
             //DoSpeechSplitByWords(upgrades, pilots);
             //DoXWDictionaryBuild(upgrades, pilots);
-            //DoCreateJSONFiles(upgrades, pilots);
+            DoCreateJSONFiles(upgrades, pilots);
             //DoGetXWSpeechParts();
         }
     }

@@ -125,10 +125,28 @@ namespace xwSearchLib.Configuration {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IS_LOCAL {
             get {
                 return ((bool)(this["IS_LOCAL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xwing.factions.in")]
+        public string FACTION_FILE {
+            get {
+                return ((string)(this["FACTION_FILE"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xwing.ships.in")]
+        public string SHIPS_FILE {
+            get {
+                return ((string)(this["SHIPS_FILE"]));
             }
         }
     }

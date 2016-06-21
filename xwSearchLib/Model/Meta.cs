@@ -40,6 +40,8 @@ namespace xwSearchLib.Model
             XW_AD_VERB,     
             PILOT_FILE,
             UPGRADE_FILE,
+            XW_FACTION_FILE,
+            XW_SHIP_FILE,
             ERROR
         }
 
