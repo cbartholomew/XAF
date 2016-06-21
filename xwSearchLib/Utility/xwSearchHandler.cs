@@ -157,7 +157,7 @@ namespace xwSearchLib.Utility
                 return phrase;
         }
 
-        public static Dictionary<string,List<string>> ShipTypeRequest(string freeText, List<string> ships) 
+        public static Dictionary<string,List<string>> FactionAndShipTypeRequest(string freeText, List<string> input) 
         {
             Dictionary<string, List<string>> output = new Dictionary<string, List<string>>();
 
@@ -166,7 +166,7 @@ namespace xwSearchLib.Utility
             for (int i = 0; i < y.Count; i++)
             {
                 List<string> tempOutput = new List<string>();
-                tempOutput = ships.FindAll(w => w.IndexOf(y[i], 
+                tempOutput = input.FindAll(w => w.IndexOf(y[i], 
                     StringComparison.OrdinalIgnoreCase) >= 0).ToList();
 
                 if (tempOutput.Count > 0) { 
@@ -187,6 +187,44 @@ namespace xwSearchLib.Utility
 
             result.pilots = tempPilots;
             result.upgrades = upgrade;
+
+            return result;
+        }
+
+        public static XWSearchResult filterByFaction(List<Pilot> pilots, List<Upgrade> upgrades, string strFaction)
+        {
+            XW_FACTION faction = xwDictionary.getFactionByString(strFaction);
+            List<Upgrade> upgradesByFaction = new List<Upgrade>();
+            List<Pilot> pilotsByFaction = new List<Pilot>();
+
+            XWSearchResult result = new XWSearchResult();
+
+            XW_RESTRICTION noRestriction = XW_RESTRICTION.NONE;
+            XW_RESTRICTION limitedRestriction = XW_RESTRICTION.LIMITED;
+            XW_RESTRICTION factionRestriction = xwDictionary.getRestrictionByFactionType(faction);
+            XW_RESTRICTION factionLimitedRestriction = xwDictionary.getRestrictionLimitedByFactionType(faction);
+
+            if (factionLimitedRestriction != XW_RESTRICTION.NONE)
+            {
+                // only pull upgrades that are everything except the restriction
+                upgradesByFaction = upgrades.FindAll(u => u.restriction == noRestriction ||
+                                                                             u.restriction == limitedRestriction ||
+                                                                             u.restriction == factionRestriction ||
+                                                                             u.restriction == factionLimitedRestriction);
+            }
+            else
+            {
+                // no limitations (except limited)
+                upgradesByFaction = upgrades.FindAll(u => u.restriction == noRestriction ||
+                                                                             u.restriction == limitedRestriction ||
+                                                                             u.restriction == factionRestriction);
+            }
+
+            // filter down pilots by faction
+            pilotsByFaction = pilots.FindAll(p => p.faction == faction);
+
+            result.upgrades = upgradesByFaction;
+            result.pilots = pilotsByFaction;
 
             return result;
         }

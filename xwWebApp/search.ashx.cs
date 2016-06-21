@@ -160,7 +160,8 @@ namespace xwWebApp
                 xwDictionary.getDictionaryPath(Meta.PATH_TYPE.XW_FACTION_FILE)
                 ));
 
-            Dictionary<string, List<string>> shipsFound = xwSearchHandler.ShipTypeRequest(text, ships);
+            Dictionary<string, List<string>> shipsFound = xwSearchHandler.FactionAndShipTypeRequest(text, ships);
+            Dictionary<string, List<string>> factionsFound = xwSearchHandler.FactionAndShipTypeRequest(text, factions);
 
             XWSearchResult results = new XWSearchResult();
 
@@ -171,7 +172,8 @@ namespace xwWebApp
 
             foreach (string aWord in searchWordList)
             {
-               if (shipsFound.ContainsKey(aWord)) {
+               if (shipsFound.ContainsKey(aWord) || 
+                   factionsFound.ContainsKey(aWord)) {
                    continue; 
                }
 
@@ -182,10 +184,29 @@ namespace xwWebApp
                results.pilots);
             }
 
+
+            if (factionsFound.Count > 0)
+            {
+                foreach(string key in factionsFound.Keys)
+                {
+                    results = xwSearchHandler.filterByFaction(
+                        results.pilots, 
+                        results.upgrades, 
+                        key);
+                }
+            }
+
             if (shipsFound.Count > 0)
             {
                 foreach(string key in shipsFound.Keys)
                 {
+                    // attack shuttle bug
+                    // overriding attack key word
+                    if (key == "attack")
+                    {
+                        continue;
+                    }
+
                     results = xwSearchHandler.filterByRequestedShip(
                         results.pilots, 
                         results.upgrades, 
